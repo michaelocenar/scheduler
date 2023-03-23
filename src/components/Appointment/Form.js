@@ -3,7 +3,7 @@ import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
 export default function(props) {
-  const {} = props;
+  const { student, interviewer, interviwers, onSave, onCancel } = props;
 
   return (
     <main className="appointment__card appointment__card--create">
