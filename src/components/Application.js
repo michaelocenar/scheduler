@@ -49,6 +49,17 @@ export default function Application(props) {
   const [day, setDay] = useState("Monday");
   const [days, setDays] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get("/api/days")
+      .then((response) => {
+        setDays(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching days:", error);
+      });
+  }, []);
+
   const appointmentList = appointmentArray.map(appointment => (
     <Appointment
       key={appointment.id}
