@@ -9,7 +9,7 @@ export default function InterviewerListItem(props) {
       className={`interviewers__item ${
         selected ? "interviewers__item--selected" : ""
       }`}
-      onClick={setInterviewer}
+      onClick={() => setInterviewer()}
     >
       <img
         className="interviewers__item-image"
