@@ -10,3 +10,20 @@ export function getAppointmentsForDay(state, day) {
   // Map the appointment IDs to the actual appointment objects and return the result
   return dayObj.appointments.map((appointmentId) => state.appointments[appointmentId]);
 }
+
+export function getInterview(state, interview) {
+  if (!interview) {
+    return null;
+  }
+
+  const interviewer = state.interviewers[interview.interviewer];
+
+  return {
+    student: interview.student,
+    interviewer: {
+      id: interviewer.id,
+      name: interviewer.name,
+      avatar: interviewer.avatar,
+    },
+  };
+}
