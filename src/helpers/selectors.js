@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function getAppointmentsForDay(state, day) {
+export function getAppointmentsForDay(state, day) {
   // Find the day object with the matching name
   const dayObj = state.days.find((dayItem) => dayItem.name === day);
 
