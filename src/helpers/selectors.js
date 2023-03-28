@@ -15,23 +15,15 @@ export function getInterviewersForDay(state, day) {
   // Find the day object with the matching name
   const dayObj = state.days.find((dayItem) => dayItem.name === day);
 
-  // If the day is not found or the appointments array is empty, return an empty array
-  if (!dayObj || !dayObj.appointments) {
+  // If the day is not found or the interviewers array is empty, return an empty array
+  if (!dayObj || !dayObj.interviewers) {
     return [];
   }
 
-  // Find the relevant appointments for the day
-  const appointments = dayObj.appointments.map((id) => state.appointments[id]);
-
-  // Extract the interviewer IDs from the appointments
-  const interviewerIds = appointments.map((appt) => appt.interview && appt.interview.interviewer);
-
-  // Remove duplicates and null values from the array of interviewer IDs
-  const uniqueIds = [...new Set(interviewerIds.filter((id) => id !== null))];
-
   // Map the interviewer IDs to the actual interviewer objects and return the result
-  return uniqueIds.map((id) => state.interviewers[id]);
+  return dayObj.interviewers.map((interviewerId) => state.interviewers[interviewerId]);
 }
+
 
 export function getInterview(state, interview) {
   if (!interview) {
