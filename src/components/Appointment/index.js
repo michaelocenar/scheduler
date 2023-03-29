@@ -32,7 +32,7 @@ export default function Appointment(props) {
         transition(SHOW);
       });
   };
-  
+
   return (
     <article className="appointment">
       <Header time={props.time} />

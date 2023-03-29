@@ -56,6 +56,28 @@ export default function Application(props) {
         });
       });
   }
+
+  function cancelInterview(id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+  
+    // Make a DELETE request to update the database
+    return axios
+      .delete(`http://localhost:8001/api/appointments/${id}`)
+      .then(() => {
+        // Update the state after the response comes back
+        setState({
+          ...state,
+          appointments,
+        });
+      });
+  }
   
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
@@ -67,6 +89,7 @@ export default function Application(props) {
       {...appointment}
       interviewers={dailyInterviewers}
       bookInterview={bookInterview}
+      cancelInterview={cancelInterview}
     />
   ));
 
