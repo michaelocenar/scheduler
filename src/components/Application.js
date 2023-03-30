@@ -39,6 +39,7 @@ export default function Application(props) {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview, interviewer: interview.interviewer },
+      // interview: { ...interview, interviewer: interviewerObj }
     };
     const appointments = {
       ...state.appointments,
@@ -87,6 +88,7 @@ export default function Application(props) {
     <Appointment
       key={appointment.id}
       {...appointment}
+      interview={appointment.interview} //comment this out if it breaks
       interviewers={dailyInterviewers}
       bookInterview={bookInterview}
       cancelInterview={cancelInterview}
