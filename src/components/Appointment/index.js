@@ -30,6 +30,7 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
+    console.log("interviewer:", interviewer);
     transition(SAVING);
     props.bookInterview(props.id, interview)
       .then(() => {
@@ -48,6 +49,7 @@ export default function Appointment(props) {
     transition(EDIT);
   };
   
+  console.log("props:", props);
 
   return (
     <article className="appointment">
@@ -72,16 +74,16 @@ export default function Appointment(props) {
         />
       )}
       {mode === DELETING && <Status message="Deleting" />}
+      {mode === SAVING && <Status message="Saving" />}
       {mode === EDIT && (
         <Form
           name={props.interview.student}
-          interviewer={props.interview.interviewer.id}
+          interviewer={props.interview.interviewer}
           interviewers={props.interviewers}
           onSave={save}
           onCancel={() => back()}
         />
       )}
-
     </article>
   );
 }

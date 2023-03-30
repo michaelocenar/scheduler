@@ -38,7 +38,7 @@ export default function Application(props) {
     const interviewerObj = state.interviewers[interview.interviewer];
     const appointment = {
       ...state.appointments[id],
-      interview: { ...interview, interviewer: interviewerObj },
+      interview: { ...interview, interviewer: interview.interviewer },
     };
     const appointments = {
       ...state.appointments,
