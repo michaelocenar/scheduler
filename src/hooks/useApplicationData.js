@@ -30,51 +30,62 @@ export default function useApplicationData() {
       });
   }, []);
 
-  function bookInterview(id, interview) {
-    const interviewerObj = state.interviewers[interview.interviewer];
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview, interviewer: interview.interviewer },
-      // interview: { ...interview, interviewer: interviewerObj }
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
+  const bookInterview = (id, interview) => {
+    return axios.put(`/api/appointments/${id}`, { interview }).then((response) => {
+      const appointment = {
+        ...state.appointments[id],
+        interview: { ...interview },
+      };
+      const appointments = {
+        ...state.appointments,
+        [id]: appointment,
+      };
   
-    // Make a PUT request to update the database with the interview data
-    return axios
-      .put(`http://localhost:8001/api/appointments/${id}`, { interview })
-      .then(() => {
-        // Update the state after the response comes back
-        setState({
-          ...state,
-          appointments,
-        });
+      // Update spots remaining
+      const dayId = state.days.find((day) => day.appointments.includes(id)).id;
+      const updatedDays = updateSpots(dayId, state.days, appointments);
+  
+      setState({
+        ...state,
+        appointments,
+        days: updatedDays,
       });
-  }
+    });
+  };
 
-  function cancelInterview(id) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: null,
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
+  const cancelInterview = (id) => {
+    return axios.delete(`/api/appointments/${id}`).then((response) => {
+      const appointment = {
+        ...state.appointments[id],
+        interview: null,
+      };
+      const appointments = {
+        ...state.appointments,
+        [id]: appointment,
+      };
   
-    // Make a DELETE request to update the database
-    return axios
-      .delete(`http://localhost:8001/api/appointments/${id}`)
-      .then(() => {
-        // Update the state after the response comes back
-        setState({
-          ...state,
-          appointments,
-        });
+      // Update spots remaining
+      const dayId = state.days.find((day) => day.appointments.includes(id)).id;
+      const updatedDays = updateSpots(dayId, state.days, appointments);
+  
+      setState({
+        ...state,
+        appointments,
+        days: updatedDays,
       });
+    });
+  };
+  
+
+  function updateSpots(dayId, days, appointments) {
+    const day = days.find((day) => day.id === dayId);
+    const spots = day.appointments.filter((appointmentId) => !appointments[appointmentId].interview).length;
+    const updatedDay = { ...day, spots };
+  
+    const updatedDays = days.map((day) => (day.id === dayId ? updatedDay : day));
+    return updatedDays;
   }
+  
 
   return {
     state,
