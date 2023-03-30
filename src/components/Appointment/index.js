@@ -47,17 +47,25 @@ export default function Appointment(props) {
       });
   };
   
-  const onDelete = () => {
-    transition(DELETING);
+  // const onDelete = () => {
+  //   transition(DELETING);
+  //   props
+  //     .cancelInterview(props.id)
+  //     .then(() => {
+  //       transition(EMPTY);
+  //     })
+  //     .catch(() => {
+  //       transition(ERROR_DELETE, true);
+  //     });
+  // };
+
+  function destroy(event) {
+    transition(DELETING, true);
     props
-      .cancelInterview(props.id)
-      .then(() => {
-        transition(EMPTY);
-      })
-      .catch(() => {
-        transition(ERROR_DELETE, true);
-      });
-  };
+     .cancelInterview(props.id)
+     .then(() => transition(EMPTY))
+     .catch(error => transition(ERROR_DELETE, true));
+   }
 
   const onEdit = () => {
     transition(EDIT);
@@ -83,7 +91,7 @@ export default function Appointment(props) {
         <Confirm
         message="Are you sure you would like to delete?"
         onCancel={() => back()}
-        onConfirm={onDelete}
+        onConfirm={destroy}
         />
         )}
       {mode === DELETING && <Status message="Deleting" />}
