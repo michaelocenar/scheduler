@@ -61,22 +61,24 @@ export default {
         statusText: "OK",
         data: fixtures.days
       });
-    }
-
-    if (url === "/api/appointments") {
+    } else if (url === "/api/appointments") {
       return Promise.resolve({
         status: 200,
         statusText: "OK",
         data: fixtures.appointments
       });
-    }
-
-    if (url === "/api/interviewers") {
+    } else if (url === "/api/interviewers") {
       return Promise.resolve({
         status: 200,
         statusText: "OK",
         data: fixtures.interviewers
       });
     }
+  }),
+  put: jest.fn(() => {
+    return Promise.resolve({
+      status: 204,
+      statusText: "No Content"
+    });
   })
-}
+};
