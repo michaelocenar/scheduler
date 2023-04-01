@@ -22,7 +22,7 @@ export default function Application(props) {
     <Appointment
       key={appointment.id}
       {...appointment}
-      interview={appointment.interview} //comment this out if it breaks
+      interview={appointment.interview}
       interviewers={dailyInterviewers}
       bookInterview={bookInterview}
       cancelInterview={cancelInterview}
