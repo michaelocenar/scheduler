@@ -39,26 +39,11 @@ export default function Appointment(props) {
       .then(() => {
         transition(SHOW);
       })
-      // .catch(() => {
-      //   transition(ERROR_SAVE, true);
-      // }); what's the difference?
       .catch(error => {
         transition(ERROR_SAVE, true);
       });
   };
   
-  // const onDelete = () => {
-  //   transition(DELETING);
-  //   props
-  //     .cancelInterview(props.id)
-  //     .then(() => {
-  //       transition(EMPTY);
-  //     })
-  //     .catch(() => {
-  //       transition(ERROR_DELETE, true);
-  //     });
-  // };
-
   function destroy(event) {
     transition(DELETING, true);
     props
@@ -73,7 +58,7 @@ export default function Appointment(props) {
 
   
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={onAdd} />}
       {mode === SHOW && (
