@@ -38,5 +38,5 @@ To run the Interview Scheduler locally:
 
 ## Final Product
 
-!["Screenshot description"](URL)
-!["Screenshot description"](URL)
+!["Screenshot appointment clicked"](https://github.com/michaelocenar/scheduler/blob/master/docs/scheduler-appointment-clicked.png?raw=true)
+!["cancel edit"](https://github.com/michaelocenar/scheduler/blob/master/docs/scheduler-main-page.png?raw=true)
