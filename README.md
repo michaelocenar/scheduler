@@ -35,3 +35,8 @@ To run the Interview Scheduler locally:
 
 1. Start the Webpack Development Server with `npm start`.
 2. The app will be served at `http://localhost:8000/`
+
+## Final Product
+
+!["Screenshot description"](URL)
+!["Screenshot description"](URL)
