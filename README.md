@@ -60,7 +60,7 @@ To run Storybook Visual Testbed, use the following command:
 
 
 
-## Final Product
+# Final Product
 
 !["Screenshot appointment clicked"](https://github.com/michaelocenar/scheduler/blob/master/docs/scheduler-appointment-clicked.png?raw=true)
 !["cancel edit"](https://github.com/michaelocenar/scheduler/blob/master/docs/scheduler-main-page.png?raw=true)
