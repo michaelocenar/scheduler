@@ -32,6 +32,12 @@ Interview Scheduler is a single-page React application that allows users to book
 1. Fork and clone this repository.
 2. Install dependencies with npm install.
 
+To run the Interview Scheduler locally:
+
+1. Start the Webpack Development Server with `npm start`.
+2. The app will be served at `http://localhost:8000/`
+
+
 # Setting up the API server
 
 To set up the API server locally, follow the instructions in the [scheduler-api](https://github.com/lighthouse-labs/scheduler-api) repository.
@@ -53,10 +59,6 @@ To run Storybook Visual Testbed, use the following command:
 ```npm run storybook```
 
 
-To run the Interview Scheduler locally:
-
-1. Start the Webpack Development Server with `npm start`.
-2. The app will be served at `http://localhost:8000/`
 
 ## Final Product
 
