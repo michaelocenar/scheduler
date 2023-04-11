@@ -28,3 +28,5 @@ InterviewerList.propTypes = {
 };
 
 export default InterviewerList;
+
+// There should be an initial interviewer's object in the useState().
