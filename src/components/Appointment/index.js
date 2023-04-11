@@ -91,10 +91,11 @@ export default function Appointment(props) {
           />
           )}
       {mode === ERROR_SAVE && (
-      <Error message="Could not save appointment." onClose={back} />
-    )}
+        // onClose goes back twice, to take user to Form component instead of Empty/Show
+        <Error message="Could not save appointment." onClose={() => { back(); back(); }} />
+      )}
       {mode === ERROR_DELETE && (
-        <Error message="Could not delete appointment." onClose={back} />
+        <Error message="Could not delete appointment." onClose={() => { back(); back(); }} />
       )}
     </article>
   );
