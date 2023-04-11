@@ -35,7 +35,10 @@ Interview Scheduler is a single-page React application that allows users to book
 
 # Setting up the API server
 
-To set up the API server locally, follow the instructions in the [scheduler-api](https://github.com/lighthouse-labs/scheduler-api) repository.
+To set up the API server locally:
+
+1. Fork and clone the scheduler-api repository [here](https://github.com/lighthouse-labs/scheduler-api).
+2. Run the server normally with `npm start` or with `npm run error`. 
 
 ## Running the Application
 
